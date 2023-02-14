@@ -53,7 +53,14 @@
                         <center><img class="center" src="assets/img/lab3/datasheet2.png" width = "600"/></center>
                         <p>Although the long mode has much longer maximum distance measurment, it is fairly sensitive to ambient light. Thus, I concluded that <strong>short-distance mode</strong> is the right choice for this robot since it requires accuracy to be its top priority for accurate mapping or surroundings. </p>
                         <h2 class="section-heading">Testing Short distance mode</h2>
+
                         <h2 class="section-heading">Using two ToF Sensors</h2>
+                        <p>Aforementioned in the Prelab section, one of the two sensors either needs to shut down for the other one to be used or have its address changed in the beginning of code. Since it is inefficient to shut down and turn on each sensor every measurment, I decided to change one of the sensor's address. I connected one of the sensor's XSHUT pin with pin 8 in the Artemis and reset the address to 0x32 instead of the default 0x52 by turning off one of the sensors and setting the address through setI2CAddress(). </p>
+                        <center><img class="center" src="assets/img/lab3/setup.png" width = "600"/></center>
+                        <p>Then the two sensors are each defined under distanceSensor1 and distanceSensor2, so simultaneous measurements are possible. The following picture shows the simultaneous distance measurments, and the video attached also shows that the two sensors are measuring distance independently. </p>
+                        <center><img class="center" src="assets/img/lab3/sensor_measurement.png" width = "600"/></center>
+                        <p></p>
+                        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/n0p7YPielFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
                         <h2 class="section-heading">ToF sensor speed</h2>
                         <h2 class="section-heading">Time v. Distance</h2>
 
