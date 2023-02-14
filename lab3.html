@@ -38,24 +38,29 @@
 
                         <h2 class="section-heading">Summary</h2>
                         <p>The overall objective of this lab is to sucessfully connect two ToF sensors and get measurements from both sensors simultaneously. Two Time-of-Flight sensors (VL53L1X) were given to measure the distances from objects. </p>
+
                         <h2 class="section-heading">Prelab</h2>
                         <p>Before setting up codes to use the sensor, I first had to figure out the approximate location of the sensor and permanently solder the connection between the Qwiic port and sensors. I consulted with the lab TAs as well as classmates for most efficient placements, and finalized the wiring connection as shown below. </p>
                         <center><img class="center" src="assets/img/lab3/prelab.jpeg" width = "700"/></center>
                         <p>I decided to solder the sensors with the long QWIIC cables to maximize the mobility of the sensor location, and I am currently planning to put one sensor at the front of the robot and another at the side. In that case, I would potentially miss the obstacles in the back and the ones on the other side. The image below depicts the two sensors soldered and connected to the QWIIC breakout board. </p>
                         <center><img class="center" src="assets/img/lab3/solder.jpg" width = "500"/></center>
                         <p>The problem of using two sensors simultaneously is that the I2C sensor address is the same for the two sensors. Two ways to solve the issue is to change one of the sensor's address in the beginning or use the XSHUT pin to turn one off to use another and alternate each time. Due to efficiency I chose to change the sensor address for one of the sensors in the setup code of the Artemis. </p>
+
                         <h2 class="section-heading">I2C Channel sensor address</h2>
                         <p>Through compiling Apollo3's Example05_Wire_I2C.ino file, the Artemis detected the sensor with address 0x29. According to the datasheet, the pre-set address is 0x52, but the address is bit shifted, and the last bit (0) is used for read write status.  </p>
                         <center><img class="center" src="assets/img/lab3/i2c.png" width = "700"/></center>
+
                         <h2 class="section-heading">Three modes of ToF Sensors</h2>
                         <p>There are three modes of ToF sensors available: short, medium and long. According to the sensor's datasheet, the range of the sensor with varying lighting environment is as follows:</p>
                         <center><img class="center" src="assets/img/lab3/datasheet1.png" width = "600"/></center>
                         <center><img class="center" src="assets/img/lab3/datasheet2.png" width = "600"/></center>
                         <p>Although the long mode has much longer maximum distance measurment, it is fairly sensitive to ambient light. Thus, I concluded that <strong>short-distance mode</strong> is the right choice for this robot since it requires accuracy to be its top priority for accurate mapping or surroundings. </p>
+
                         <h2 class="section-heading">Testing Short distance mode</h2>
                         <p>To test the sensors in short distance mode, I used the ReadDistance example code from the sensor library and altered a bit to investigate the reliability of the sensor as well as the ranging time for each sensor. Since the sensor is default set to long distance mode, I had to add distanceSensor.setDistanceModeShort(); to the setup code. Then, I gathered the distance data from 50 mm to the limit, which is 1300 mm. When the sensor exceeds the maximum, the measurment dropped to a low value (~300 to 400 mm). The graph below compares the ideal sensor with the actual sensor. It can be seen that the actual sensor starts to deviate slightly from the ideal sensor graph as the distance increases, meaning that the accuracy decreases the sensor gets further away from the wall. </p>
                         <center><img class="center" src="assets/img/lab3/graph.png" width = "400"/></center>
                         <p>Thus, it can be concluded that the sensor's range is indeed around 1300mm, but it is better practice to not go near the extreme since the value did get unstable as it reached the maximum. The accuracy is pretty good when the measurment is < 100 mm, but starts to decrease as it gets further away. In terms of repeatability, the measurement at same distance were pretty consistent especially at lower range values. The ranging time for the sensor was around 56 ms and was consistent regardless of the measurment distance. </p>
+
                         <h2 class="section-heading">Using two ToF Sensors</h2>
                         <p>Aforementioned in the Prelab section, one of the two sensors either needs to shut down for the other one to be used or have its address changed in the beginning of code. Since it is inefficient to shut down and turn on each sensor every measurment, I decided to change one of the sensor's address. I connected one of the sensor's XSHUT pin with pin 8 in the Artemis and reset the address to 0x32 instead of the default 0x52 by turning off one of the sensors and setting the address through setI2CAddress(). </p>
                         <center><img class="center" src="assets/img/lab3/setup.png" width = "600"/></center>
@@ -63,9 +68,19 @@
                         <center><img class="center" src="assets/img/lab3/sensor_measurement.png" width = "600"/></center>
                         <p></p>
                         <center><iframe width="560" height="315" src="https://www.youtube.com/embed/n0p7YPielFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
                         <h2 class="section-heading">ToF sensor speed</h2>
-                        <p>To measure the time it takes to measure the distance using the sensors, I got the initial time at the start of the loop and final time at the end of the loop and subtracted the two values to get the total time for one loop in the same code for getting the two sensor values. The code used and the output are attached below, and it turns out that it takes exactly 108 milliseconds to execute one loop. The limiting factor for the time seems to be the time for the sensor to output the distance measurements</p>
+                        <p>To measure the time it takes to measure the distance using the sensors, I got the initial time at the start of the loop and final time at the end of the loop and subtracted the two values to get the total time for one loop in the same code for getting the two sensor values. The code used and the output are attached below, and it turns out that it takes exactly 108 milliseconds to execute one loop. The main limiting factor of the run time is the internal delay that the sensor has. For the sensor speed measurements, I addded an additional print statement to the two sensor output code used above, so that it prints the time whenever the sensor is not ready to output the value. </p>
+                        <center><img class="center" src="assets/img/lab3/time.png" width = "600"/></center>
+
                         <h2 class="section-heading">Time v. Distance</h2>
+                        <p>For the graphing task, I used the lab 2 GET_TEMP_5s_RAPID as my base code and added the necessary setup code onto the ble_arduino.ino. I created a new command called GET_DIST that gets the sensor outputs and sends it back to the computer in 'T:(time)|D1:(distance1)|D2:(distance2)' format. </p>
+                        <center><img class="center" src="assets/img/lab3/code.png" width = "700"/></center>
+                        <p>The notification handler in the jupyter notebook then got the string and stored it separately in time_arr, dist1 and dist2 list variables. </p>
+                        <center><img class="center" src="assets/img/lab3/code2.png" width = "500"/></center>
+                        <p>Then, they were plotted as shown below. </p>
+                        <center><img class="center" src="assets/img/lab3/graph2.png" width = "600"/></center>
+                        <p></p>
 
 
                     </div>
