@@ -59,6 +59,8 @@
                         <center><img class="center" src="assets/img/lab2/task3_1.png" width = "700"/></center>
                         <h2 class="section-heading">Task 4: GET_TEMP_5s command with notification handler</h2>
                         <p>This command collects temperature values in degrees Celcius over 5 seconds. Same as GET_TIME_MILLIS and ECHO commands, the command types enum were updated and the case GET_TEMO_5s was created in ble_arduino.ino. I used delay(1000) to wait for one second and collect the time through millis() and temperature through getTempDegC(). After the values are collected, I appended everything in tx_estring_value and sent the result string through tx_characteristic_string.writeValue(). </p>
+                        <center><img class="center" src="assets/img/lab2/task4_3.png" width = "700"/></center>
+                        <p></p>
                         <center><img class="center" src="assets/img/lab2/task4_1.png" width = "700"/></center>
                         <p>The notification handler was also set up by creating a python helper function, where it collected the resulting string from GET_TEMP_5s command so that the computer can access the result without manually receiving the resulting string. </p>
                         <center><img class="center" src="assets/img/lab2/task4_2.png" width = "600"/></center>
