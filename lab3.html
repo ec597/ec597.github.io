@@ -17,7 +17,7 @@
     </head>
     <body>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/lab2.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/lab3.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -36,7 +36,22 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
 
+                        <h2 class="section-heading">Summary</h2>
+                        <p>The overall objective of this lab is to sucessfully connect two ToF sensors and get measurements from both sensors simultaneously. Two Time-of-Flight sensors (VL53L1X) were given to measure the distances from objects. </p>
                         <h2 class="section-heading">Prelab</h2>
+                        <p>Before setting up codes to use the sensor, I first had to figure out the approximate location of the sensor and permanently solder the connection between the Qwiic port and sensors. I consulted with the lab TAs as well as classmates for most efficient placements, and finalized the wiring connection as shown below. </p>
+                        <center><img class="center" src="assets/img/lab3/prelab.jpeg" width = "700"/></center>
+                        <p>I decided to solder the sensors with the long QWIIC cables to maximize the mobility of the sensor location, and I am currently planning to put one sensor at the front of the robot and another at the side. In that case, I would potentially miss the obstacles in the back and the ones on the other side.  </p>
+                        <p>The problem of using two sensors simultaneously is that the I2C sensor address is the same for the two sensors. Two ways to solve the issue is to change one of the sensor's address in the beginning or use the XSHUT pin to turn one off to use another and alternate each time. Due to efficiency I chose to change the sensor address for one of the sensors in the setup code of the Artemis. </p>
+                        <h2 class="section-heading">I2C Channel sensor address</h2>
+                        <p>Through compiling Apollo3's Example05_Wire_I2C.ino file, the Artemis detected the sensor with address 0x29. This was unexpected since the sensor is known to have address 0x52 according to the sensor's datasheet. </p>
+                        <center><img class="center" src="assets/img/lab3/i2c.png" width = "700"/></center>
+                        <h2 class="section-heading">Three modes of ToF Sensors</h2>
+                        <h2 class="section-heading">Testing Short distance mode</h2>
+                        <h2 class="section-heading">Using two ToF Sensors</h2>
+                        <h2 class="section-heading">ToF sensor speed</h2>
+                        <h2 class="section-heading">Time v. Distance</h2>
+
 
                     </div>
                 </div>

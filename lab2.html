@@ -38,9 +38,23 @@
                         <h2 class="section-heading">Summary</h2>
                         <p>Before implementing any code, I first set up the bluetooth connection between the computer and the Artemis. Throughout the upcoming labs, python through Jupyter notebook will be used for computer communication, and Arduino programming language will be used for Artemis code. With a mac system with intel processor, the setup process was fairly smooth. To ensure stable bluetooth connection, I completed 5 tasks explained below by sending, receiving and processing data between the computer and the Artemis. </p>
                         <h2 class = "section-heading">Pre-Lab</h2>
+                        <p></p>
+                        <h3>Setup</h3>
                         <p>For the pre-lab, I followed the steps in the Lab 2 instructions to set up and activate a virtual python environment. With the codebase file given, I performed the 5 communication tasks, where jupyter python code was used to communicate with the Artemis, and Arduino processing language was used to run the Artemis board.  </p>
                         <p>To connect the Artemis board via bluetooth, I first got the board's MAC address by running the ble_arduino.ino in the code base and updated the MAC address, and used an unique uuid to distinguish my Artemis board with other's in the classroom for better connection. To ensure that the bluetooth connection is secure, I ran the demo file to test and use BLE. </p>
                         <center><img class="center" src="assets/img/lab2/prelab.png" width = "700"/></center>
+                        <p></p>
+                        <h3>Codebase</h3>
+                        <p>The provided codebase is comprised of ble_arduino and ble_python. ble_arduino files contain definitions of commands that are compiled to the Artemis board, and the ble_python files contain python files that creates a communication pathway between the Artemis and the computer. </p>
+
+                        <h2 class = "section-heading">Configuration</h2>
+                        <p>From the MAC address from running the initial ble_arduino.ino file, I updated the artemis_address variable in connections.yaml. Then, using the uuid4() function, I generated an unique uuid and replaced the BLE_UUID_TEST_SERVICE and ble_service with the newly generated uuid to ensure stable and secure bluetooth connection between my computer and the Artemis.</p>
+                        <center><img class="center" src="assets/img/lab2/config.png" width = "600"/></center>
+
+                        <h2 class = "section-heading">demo.ipynb</h2>
+                        <p>Before defining any new commands for the Artemis, I checked the bluetooth connection by running the demo.ipynb commands: PING and SEND_TWO_INTS.</p>
+                        <center><img class="center" src="assets/img/lab2/demo.png" width = "600"/></center>
+
                         <h2 class="section-heading">Task 1: ECHO Command</h2>
                         <p>To complete the ECHO command, I first had to update the ble_arduino.ino file. The ECHO command was defined as a case and CommandType enum in ble_arduino.ino and in cmd_types.py. The ECHO command essentially got the input string from the computer, added ':)' at the end of the string input using tx_estring_value, and sent it back through tx_characterisitic_string to the computer. To use the ECHO command, the computer sent the command through ble.send_command, and retrieved the command through receive_string function. </p>
                         <center><img class="center" src="assets/img/lab2/task1_3.png" width = "600"/></center>
@@ -71,7 +85,7 @@
                         <center><img class="center" src="assets/img/lab2/task5_1.png" width = "700"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab2/task5_4.png" width = "400"/></center>
-                        <h2 class = "section-heading">Task 6: Latency</h2>
+                        <h2 class = "section-heading">Task 6: Limitations</h2>
                         <p>To efficiently send maximum amount of data over short period of time, it is crucial to understand the limitations of sending data through the Artemis board. With 384kB of RAM, assuming that it is fully used to send data, it is (384 kB)*(8192 bits/kB)=3,145,728 bits. Sending 16-bit values taken at 150 Hz means that 150 samples are sent per seconds, which is 150*16=2400 bits/s --> 12000 bits of data sent over five seconds. Thus, by using full capacity of the board's RAM, it can send 262.14 groups of 5 second data, with the assumption that only 1 16-bit value is sent. Thus, it is important to consider the size of the data sent to the computer since large-size data has limited time of storage. </p>
 
                         <p></p>
