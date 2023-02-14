@@ -72,7 +72,7 @@
                         <p></p>
                         <center><img class="center" src="assets/img/lab2/task5_4.png" width = "400"/></center>
                         <h2 class = "section-heading">Task 6: Latency</h2>
-                        <p>To efficiently send maximum amount of data over short period of time, it is crucial to understand the limitations of sending data through the Artemis board. With 384kB of RAM, assuming that it is fully used to send data, it is (384 kB)*(8192 bits/kB)=3,145,728 bits. Sending 16-bit values taken at 150 Hz means that 150 samples are sent per seconds, which is 150*16=2400 bits/s --> 12000 bits of data sent over five seconds. Thus, by using full capacity of the board's RAM, it can send 262.14 groups of 5 second data, with the assumption that only 1 16-bit value is sent. Thus, it is important to remember the size of the data sent since large-size data has limited time of storage. </p>
+                        <p>To efficiently send maximum amount of data over short period of time, it is crucial to understand the limitations of sending data through the Artemis board. With 384kB of RAM, assuming that it is fully used to send data, it is (384 kB)*(8192 bits/kB)=3,145,728 bits. Sending 16-bit values taken at 150 Hz means that 150 samples are sent per seconds, which is 150*16=2400 bits/s --> 12000 bits of data sent over five seconds. Thus, by using full capacity of the board's RAM, it can send 262.14 groups of 5 second data, with the assumption that only 1 16-bit value is sent. Thus, it is important to consider the size of the data sent to the computer since large-size data has limited time of storage. </p>
 
                         <p></p>
 
