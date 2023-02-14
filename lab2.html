@@ -35,13 +35,41 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading">Setting up bluetooth - Computer Setup</h2>
-                        <p>Before implementing any code, I set up the bluetooth connection between the computer and the Artemis. Throughout the upcoming labs, python through Jupyter notebook will be used for computer communication, and Arduino programming language will be used for Artemis code. With a mac system with intel processor, the setup process was fairly smooth. </p>
+                        <h2 class="section-heading">Summary</h2>
+                        <p>Before implementing any code, I first set up the bluetooth connection between the computer and the Artemis. Throughout the upcoming labs, python through Jupyter notebook will be used for computer communication, and Arduino programming language will be used for Artemis code. With a mac system with intel processor, the setup process was fairly smooth. To ensure stable bluetooth connection, I completed 5 tasks explained below by sending, receiving and processing data between the computer and the Artemis. </p>
+                        <h2 class = "section-heading">Pre-Lab</h2>
+                        <p>For the pre-lab, I followed the steps in the Lab 2 instructions to set up and activate a virtual python environment. With the codebase file given, I performed the 5 communication tasks, where jupyter python code was used to communicate with the Artemis, and Arduino processing language was used to run the Artemis board.  </p>
+                        <p>To connect the Artemis board via bluetooth, I first got the board's MAC address by running the ble_arduino.ino in the code base and updated the MAC address, and used an unique uuid to distinguish my Artemis board with other's in the classroom for better connection. To ensure that the bluetooth connection is secure, I ran the demo file to test and use BLE. </p>
+                        <center><img class="center" src="assets/img/lab2/prelab.png" width = "700"/></center>
                         <h2 class="section-heading">Task 1: ECHO Command</h2>
+                        <p>To complete the ECHO command, I first had to update the ble_arduino.ino file. The ECHO command was defined as a case and CommandType enum in ble_arduino.ino and in cmd_types.py. The ECHO command essentially got the input string from the computer, added ':)' at the end of the string input using tx_estring_value, and sent it back through tx_characterisitic_string to the computer. To use the ECHO command, the computer sent the command through ble.send_command, and retrieved the command through receive_string function. </p>
+                        <center><img class="center" src="assets/img/lab2/task1_3.png" width = "600"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab2/task1_1.png" width = "700"/></center>
+                        <p>The image below is the screen shot of the serial monitor of ble_arduino.ino running the ECHO command. </p>
+                        <center><img class="center" src="assets/img/lab2/task1_2.png" width = "400"/></center>
                         <h2 class="section-heading">Task 2: GET_TIME_MILLIS command</h2>
+                        <p>For the GET_TIME_MILLIS command, the setup process was the same as the ECHO command. In the GET_TIME_MILLIS command definition, millis() function was used to get the current time in milliseconds and it was appended to tx_estring_value with "T:" in front of the time. On the computer end, the output message was received through receive_string function, after the bluetooth sent the GET_TIME_MILLIS command through ble.send_command function. </p>
+                        <center><img class="center" src="assets/img/lab2/task2_1.png" width = "700"/></center>
+                        <p>As seen in the example below, the computer first sends the GET_TIME_MILLIS command and receives the current time in milliseconds in format "T:(time)".
+                        <center><img class="center" src="assets/img/lab2/task2_3.png" width = "600"/></center>
                         <h2 class="section-heading">Task 3: Notification handler</h2>
+                        <p>The callback function allows the computer to get the output of the command without calling the receive_string function. To complete the task, I had to create a helper function in the jupyter lab that took in uuid and byte_array as parameters. In my notification handler function, it stored the string output from GET_TIME_MILLIS command in a global variable called "timeval" and whenever the GET_TIME_MILLIS command was sent, the global variable got automatically updated with the most recent value. </p>
+                        <p>As shown in the screenshot below, the computer stores the output from GET_TIME_MILLIS command in variable 'timeval' without using the receive_string function in ble. </p>
+                        <center><img class="center" src="assets/img/lab2/task3_1.png" width = "700"/></center>
                         <h2 class="section-heading">Task 4: GET_TEMP_5s command with notification handler</h2>
+                        <p>This command collects temperature values in degrees Celcius over 5 seconds. Same as GET_TIME_MILLIS and ECHO commands, the command types enum were updated and the case GET_TEMO_5s was created in ble_arduino.ino. I used delay(1000) to wait for one second and collect the time through millis() and temperature through getTempDegC(). After the values are collected, I appended everything in tx_estring_value and sent the result string through tx_characteristic_string.writeValue(). </p>
+                        <center><img class="center" src="assets/img/lab2/task4_1.png" width = "700"/></center>
+                        <p>The notification handler was also set up by creating a python helper function, where it collected the resulting string from GET_TEMP_5s command so that the computer can access the result without manually receiving the resulting string. </p>
+                        <center><img class="center" src="assets/img/lab2/task4_2.png" width = "600"/></center>
                         <h2 class="section-heading">Task 5: GET_TIME_5s_RAPID command with notification handler</h2>
+                        <p>This command was similar to GET_TEMP_5s, but rather than collecting one temperature value per second, this command collected as much data point as possible in five seconds. Thus, I used a while loop that runs for 5 seconds and sent as much data as possible. Each data point was sent as a string in "T:(time)|C:(temp)" format, and the notification handler got the result string and appended it to an array. </p>
+                        <center><img class="center" src="assets/img/lab2/task5_3.png" width = "700"/></center>
+                        <p>The resulting array contained 658 temperature data point over 5 seconds.</p>
+                        <center><img class="center" src="assets/img/lab2/task5_1.png" width = "700"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab2/task5_4.png" width = "400"/></center>
+                        <h2 class = "section-heading">Task 6: Latency</h2>
 
                     </div>
                 </div>
