@@ -58,13 +58,20 @@
 
                         <h2 class="section-heading">Gyroscope</h2>
                         <p>With the gyroscope, pitch, roll and yaw values can be calculated using the following equations from lecture. </p>
+                        <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. </p>
 
                         <h2 class="section-heading">Sample Data</h2>
+                        <p>We integrated the code from lab 2 and 3, such that the Artemis captured both ToF and IMU sensor measurements through bluetooth connection. For ease of processing, I sent the data in two smaller arrays, one for each sensor.  </p>
 
                         <h2 class="section-heading">Cutting the cord</h2>
+                        <p>To connect the battery to the Artemis, I cut the battery wires one at a time, soldered them onto the JST connector, and covered the connection with the heat shrink. The 650 mAh battery was used for the Artemis since the larger capacity battery was saved for motor battery power. </p>
+                        <center><img class="center" src="assets/img/lab4/task5.jpg" width = "500"/></center>
 
                         <h2 class="section-heading">Stunt!</h2>
-                        <iframe width="500" height="300" src="https://www.youtube.com/embed/aZUhewfymkA" title="stunt1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p>After mounting the 850 mAh battery onto the RC car, we played around with the car and found that it is very sensitive to inputs and hard to control. Rapid reverse in direction caused the car to flip and constant rotation input caused the car to spin at relatively constant position. </p>
+                        <center><iframe width="500" height="300" src="https://www.youtube.com/embed/aZUhewfymkA" title="stunt1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <p>Finally, we taped the two ToF sensors, IMU and the Artemis onto the car and collected data over 5 seconds. Then, the data was sent over to the computer through bluetooth and plotted in python. </p>
+                        <p></p>
                     </div>
                 </div>
             </div>
