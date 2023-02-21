@@ -78,7 +78,7 @@
                         <center><img class="center" src="assets/img/lab2/task4_1.png" width = "700"/></center>
                         <p>The notification handler was also set up by creating a python helper function, where it collected the resulting string from GET_TEMP_5s command so that the computer can access the result without manually receiving the resulting string. </p>
                         <center><img class="center" src="assets/img/lab2/task4_2.png" width = "600"/></center>
-                        <h2 class="section-heading">Task 5: GET_TIME_5s_RAPID command with notification handler</h2>
+                        <h2 class="section-heading">Task 5: GET_TEMP_5s_RAPID command with notification handler</h2>
                         <p>This command was similar to GET_TEMP_5s, but rather than collecting one temperature value per second, this command collected as much data point as possible in five seconds. Thus, I used a while loop that runs for 5 seconds and sent as much data as possible. Each data point was sent as a string in "T:(time)|C:(temp)" format, and the notification handler got the result string and appended it to an array. </p>
                         <center><img class="center" src="assets/img/lab2/task5_3.png" width = "700"/></center>
                         <p>The resulting array contained 658 temperature data point over 5 seconds.</p>
