@@ -67,14 +67,18 @@
                         <p>With the gyroscope, pitch, roll and yaw values can be calculated using the following equations from lecture. </p>
                         <center><img class="center" src="assets/img/lab4/task3-1.png" width = "200"/></center>
                         <center><img class="center" src="assets/img/lab4/task3-2.png" width = "200"/></center>
+                        <center><iframe width="500" height="300" src="https://www.youtube.com/embed/tScjid11Bj0" title="GYR data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
                         <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. The final equations are shown below. </p>
                         <center><img class="center" src="assets/img/lab4/task3-3.png" width = "350"/></center>
                         <center><img class="center" src="assets/img/lab4/task3-4.png" width = "350"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab4/task3-5.png" width = "500"/></center>
+                        <p></p>
+                        <center><iframe width="500" height="300" src="https://www.youtube.com/embed/LK6WG6nQpLs" title="Complimentary filter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
                         <h2 class="section-heading">Sample Data</h2>
-                        <p>First, we gathered the IMU data as fast as we can by removing all the print statements and sending the data whenever it is ready. Once the data is received via bluetooth, python used the notification handler to collect data real time, and we calculated the time it takes to gather one set of IMU data, which was around 0.76 milliseconds. </p>
+                        <p>First, we gathered the IMU data as fast as we can by removing all the print statements and sending the data whenever it is ready. Once the data is received via bluetooth, python used the notification handler to collect data real time, and we calculated the time it takes to gather one set of IMU data, which was around 7.6 milliseconds. </p>
                         <center><img class="center" src="assets/img/lab4/task4-1.png" width = "700"/></center>
                         <p>We integrated the code from lab 2 and 3, such that the Artemis captured both ToF and IMU sensor measurements through bluetooth connection. For ease of processing, I sent the data in two separate strings, one for each sensor. Then, once the data arrived, we organized the data into separate arrays for IMU time, pitch, roll, ToF time and the two distance sensors' readings. Due to faster data collection time for IMU, the array size for IMU data was large compared to that of the ToF sensors. </p>
                         <center><img class="center" src="assets/img/lab4/task4-3.png" width = "500"/></center>
@@ -90,9 +94,10 @@
                         <p>After mounting the 850 mAh battery onto the RC car, we played around with the car and found that it is very sensitive to inputs and hard to control. Rapid reverse in direction caused the car to flip and constant rotation input caused the car to spin at relatively constant position. </p>
                         <center><iframe width="500" height="300" src="https://www.youtube.com/embed/aZUhewfymkA" title="stunt1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
                         <p>Finally, we taped the two ToF sensors, IMU and the Artemis onto the car and collected data over 5 seconds. Then, the data was sent over to the computer through bluetooth and plotted in python. </p>
-                        <center><img class="center" src="assets/img/lab4/task6-1.png" width = "500"/></center>
-                        <center><img class="center" src="assets/img/lab4/task6-2.png" width = "500"/></center>
-
+                        <center><iframe width="500" height="300" src="https://www.youtube.com/embed/AZn1ITpV_9A" title="Stunts w/ sensors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab4/task6-1.png" width = "300"/><img class="center" src="assets/img/lab4/task6-2.png" width = "300"/></center>
+                        <p></p>
 
                     </div>
                 </div>
