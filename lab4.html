@@ -34,6 +34,8 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="section-heading">!DISCLAIMER!</h2>
+                        <p>At the end of the lab, I was looking through the values in the time array, and realized that my time scale was wrong. Please note that all time values for this lab is supposed to be 10 times bigger. :)</p>
                         <h2 class="section-heading">Summary</h2>
                         <p>This objective of this lab was to set the IMU sensor to collect data from its accelerometer and gyroscope and get real-time roll, pitch and yaw information. Also, we equipped the Artemis, TOF sensors and IMU onto the robot, all powered through the given batteries. </p>
                         <p>We started off with setting up the IMU with the Artemis and analyzed its accelerometer and gyroscope data. Then, similar to the TOF sensor lab, we stored and sent the data through bluetooth, and finally, we connected all the sensors and batteries, and collected data from the RC car.  </p>
@@ -74,7 +76,11 @@
                         <h2 class="section-heading">Sample Data</h2>
                         <p>First, we gathered the IMU data as fast as we can by removing all the print statements and sending the data whenever it is ready. Once the data is received via bluetooth, python used the notification handler to collect data real time, and we calculated the time it takes to gather one set of IMU data, which was around 0.76 milliseconds. </p>
                         <center><img class="center" src="assets/img/lab4/task4-1.png" width = "700"/></center>
-                        <p>We integrated the code from lab 2 and 3, such that the Artemis captured both ToF and IMU sensor measurements through bluetooth connection. For ease of processing, I sent the data in two smaller arrays, one for each sensor.  </p>
+                        <p>We integrated the code from lab 2 and 3, such that the Artemis captured both ToF and IMU sensor measurements through bluetooth connection. For ease of processing, I sent the data in two separate strings, one for each sensor. Then, once the data arrived, we organized the data into separate arrays for IMU time, pitch, roll, ToF time and the two distance sensors' readings. Due to faster data collection time for IMU, the array size for IMU data was large compared to that of the ToF sensors. </p>
+                        <center><img class="center" src="assets/img/lab4/task4-3.png" width = "500"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab4/task4-2.png" width = "700"/></center>
+
 
                         <h2 class="section-heading">Cutting the cord</h2>
                         <p>To connect the battery to the Artemis, I cut the battery wires one at a time, soldered them onto the JST connector, and covered the connection with the heat shrink. The 650 mAh battery was used for the Artemis since the larger capacity battery was saved for motor battery power. </p>
@@ -84,7 +90,10 @@
                         <p>After mounting the 850 mAh battery onto the RC car, we played around with the car and found that it is very sensitive to inputs and hard to control. Rapid reverse in direction caused the car to flip and constant rotation input caused the car to spin at relatively constant position. </p>
                         <center><iframe width="500" height="300" src="https://www.youtube.com/embed/aZUhewfymkA" title="stunt1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
                         <p>Finally, we taped the two ToF sensors, IMU and the Artemis onto the car and collected data over 5 seconds. Then, the data was sent over to the computer through bluetooth and plotted in python. </p>
-                        <p></p>
+                        <center><img class="center" src="assets/img/lab4/task6-1.png" width = "500"/></center>
+                        <center><img class="center" src="assets/img/lab4/task6-2.png" width = "500"/></center>
+
+
                     </div>
                 </div>
             </div>
