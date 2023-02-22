@@ -65,9 +65,15 @@
                         <p>With the gyroscope, pitch, roll and yaw values can be calculated using the following equations from lecture. </p>
                         <center><img class="center" src="assets/img/lab4/task3-1.png" width = "200"/></center>
                         <center><img class="center" src="assets/img/lab4/task3-2.png" width = "200"/></center>
-                        <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. </p>
+                        <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. The final equations are shown below. </p>
+                        <center><img class="center" src="assets/img/lab4/task3-3.png" width = "350"/></center>
+                        <center><img class="center" src="assets/img/lab4/task3-4.png" width = "350"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab4/task3-5.png" width = "500"/></center>
 
                         <h2 class="section-heading">Sample Data</h2>
+                        <p>First, we gathered the IMU data as fast as we can by removing all the print statements and sending the data whenever it is ready. Once the data is received via bluetooth, python used the notification handler to collect data real time, and we calculated the time it takes to gather one set of IMU data, which was around 0.76 milliseconds. </p>
+                        <center><img class="center" src="assets/img/lab4/task4-1.png" width = "700"/></center>
                         <p>We integrated the code from lab 2 and 3, such that the Artemis captured both ToF and IMU sensor measurements through bluetooth connection. For ease of processing, I sent the data in two smaller arrays, one for each sensor.  </p>
 
                         <h2 class="section-heading">Cutting the cord</h2>
