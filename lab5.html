@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Lab 5</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css2" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css2" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css2/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/lab5.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Lab 5: Motor Driver and Open Loop Control</h1>
+                            <h2>The purpose of this lab is to change from manual to open loop control of the car. The end of the lab allows for pre-programmed series of moves, using the Artemis board and two dual motor drivers. </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="section-heading">Prelab</h2>
+                        <p>Before taking out the default control PCB and the motor connection, I drew the connection between the Artemis, motor controllers, motors and power beforehand. I decided to use pins 4, 5, 15, and 16 on the Artemis for PWM signals, and all the connections in the motor controller was parallel coupled in order to double the current for the motor drivers. </p>
+                        <center><img class="center" src="assets/img/lab5/prelab.jpeg" width = "700"/></center>
+
+                        <h2 class="section-heading">Power supply and Oscilloscope hookup</h2>
+                        <p>Before finalizing the wiring, I used the external power supply and the oscilloscope to verify my circuit. To replicate the motor batteries, I used 3.7 V as my voltage input for the motor driver and generated the PWM signal. </p>
+                        <center><img class="center" src="assets/img/lab5/task1-1.jpg" width = "700"/></center>
+
+                        <p>The image below is the PWM signal output on the oscilloscope, and the code snippet to generate the signal. I used analogWrite() command to generate the PWM signal and the oscillosope result validates my circuitry. </p>
+                        <center><img class="center" src="assets/img/lab5/task1-2.jpg" width = "400"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab5/task1-3.png" width = "300"/></center>
+
+
+                        <h2 class="section-heading">Motor testing</h2>
+                        <p>Wheels alternatively spinning</p>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/L1xLrwgmGnQ" title="alternating motors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <center><img class="center" src="assets/img/lab5/task2-3.png" width = "300"/></center>
+
+                        <p>Both motors spinning fowards</p>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/FeKu3m_D67o" title="Both wheels forward" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+                        <p>Both motors spinning backwards</p>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/2Q_YH7yg6D8" title="Both motors spinning backwards" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+
+                        <h2 class="section-heading">Car Assembly</h2>
+                        <p>Below is an image of my car, with the Artemis, two ToF sensors, one IMU and two motor controllers all connected and organized. The battery for the motor controllers is ont he other side of the car for organization and all cables will be tightened with cable ties for the 360 degrees stunts in the future labs. </p>
+                        <!-- INSERT image of Car-->
+
+                        <h2 class="section-heading">Calibration</h2>
+                        <p>By slowing increasing the PWM value through analogWrite function, the lower bound of the PWM signal was found to be around 45.</p>
+                        <p>As seen in the video below, my car was drifting to the left drastically when both motors had the same input. To ensure that the car moved fairly straight, I implemented a calibration factor so that the car moved approximately along the straight line.</p>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/EVSWk4930Xw" title="Pre calibration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <p>This video shows the car movement after the calibration. It is moving fairly in a straight direction, unlike the video below. The code snippet is also attached, where the calibration for the right motor was 0.65 compared to the left motor. </p>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/A7iI7I8D2q0" title="post-calibration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+                        <h2 class="section-heading">Open Loop</h2>
+                        <p>The video below is my open loop demonstration, where I moved the robot straight, turned left and moved backwards. </p>
+                        <!-- INSERT VIDEO OF open loop-->
+                        <p></p>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
