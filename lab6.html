@@ -38,7 +38,7 @@
                         <p>In order to implement and test the PID controller through my labtop, I set up a few bluetooth commands for communication between the robot and the computer. <b>SET_VALS</b> allows the user to change the PID controller values on the jupyter notebook directly, rather than uploading the .ino code to Artemis everytime one value is changed. </p>
                         <center><img class="center" src="assets/img/lab6/prelab.png" width = "500"/></center>
 
-                        <p>The user has to define which controller it is changing and the value corresponding to the controller. (i.e. "P:0.05"). For the PID control task, <b>PID_CONTORL</b> starts the task: robot going towards the wall and stopping at a certin setpoint (300mm). </p>
+                        <p>The user has to define which controller it is changing and the value corresponding to the controller. (i.e. "P:0.05"). For the PID control task, <b>PID_CONTROL</b> starts the task: robot going towards the wall and stopping at a certin setpoint (300mm). </p>
                         <center><img class="center" src="assets/img/lab6/prelab1.png" width = "420"/></center>
 
                         <p>After the task as been performed, <b>GET_VALS</b> command allows the user to retrieve the stored data in the Artemis of the stunt. Using the notification handler, the values are stored in corresponding arrays in python and later graphed. </p>
