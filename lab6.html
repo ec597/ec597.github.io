@@ -51,7 +51,7 @@
                         <center><img class="center" src="assets/img/lab6/prelab3.png" width = "420"/></center>
 
                         <h2 class="section-heading">P Control</h2>
-                        <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.06. When implemented and tested, however, there was a consistent error between the setpoint distance and the actual stopping distance. Below are the videos and the resulting graphs from the test. </p>
+                        <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.07. If the Kp value was bigger, the velocity of the car was higher, but the car was very close to crashing due to a large overshoot. When implemented and tested, however, there was a consistent error between the setpoint distance and the actual stopping distance. For example, a Kp value above 0.25 made the car crash to the wall. Below are the videos and the resulting graphs from the test. </p>
                         <center><img class="center" src="assets/img/lab6/motor_p1.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p1.png" width = "300"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab6/motor_p2.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p2.png" width = "300"/></center>
@@ -60,8 +60,8 @@
                         <center><iframe width="600" height="350" src="https://www.youtube.com/embed/hKMIBmt_PNg" title="P controller" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
                         <h2 class="section-heading">PD Control</h2>
-                        <p>To additionally implement a derivative control, I calculated the derivative and implemented it in the <b>PID_control</b>. I chose the derivative control since it is relatively easy to implement and I don't have to worry about the integral control. </p>
-                        <p>The finalized Kp and Kd values were Kp = 0.05, Kd = 0.08. Below are the graphs and the implementation video. </p>
+                        <p>To additionally implement a derivative control, I calculated the derivative and implemented it in the <b>PID_control</b>. I chose the derivative control since it is relatively easy to implement and I don't have to worry about the integrator wind-up in integral control. </p>
+                        <p>The finalized Kp and Kd values were Kp = 0.08, Kd = 0.06. Below are the graphs and the implementation video. </p>
                         <center><img class="center" src="assets/img/lab6/motor_pd1.png" width = "300"/><img class="center" src="assets/img/lab6/distance_pd1.png" width = "300"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab6/motor_pd2.png" width = "300"/><img class="center" src="assets/img/lab6/distance_pd2.png" width = "300"/></center>
@@ -69,6 +69,9 @@
                         <center><img class="center" src="assets/img/lab6/motor_pd3.png" width = "300"/><img class="center" src="assets/img/lab6/distance_pd3.png" width = "300"/></center>
                         <center> <iframe width="600" height="350" src="https://www.youtube.com/embed/wwGpTn3zYmU" title="PD controller" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
+                        <h2 class="section-heading">Conclusion</h2>
+                        <p>For each controller test, all three trials gave similar results. For P controller, there was a larger overshoot, and therefore longer time to stop at the setpoint. In the video, it can be seen through the the back-and-forth motion that the robot makes around the 300 mm point. Comparatively, the PD controller had a smaller overshoot and found its position relatively quickly than the P controller. The P controller took around 5.5 seconds to stabilize and the PD controller took around 4.5 seconds to stabilize.</p>
+                        <p>I only sent the collected data once after the task was complete since the task was short (maximum 6 seconds) and there were only 4 arrays of 150 data points to send at the end, although I never used the full capacity. However, if I have a longer task later on, I would have to send the data during the task if I need to. </p>
                         <p></p>
 
                     </div>
