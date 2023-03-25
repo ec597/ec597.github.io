@@ -35,10 +35,27 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <h2 class="section-heading">Prelab</h2>
-                        <p>In order to implement and test the PID controller through my labtop, I set up a few bluetooth commands for communication between the robot and the computer. <b>SET_VALS</b> allows the user to change the PID controller values on the jupyter notebook directly, rather than uploading the .ino code to Artemis everytime one value is changed. The user has to define which controller it is changing and the value corresponding to the controller. (i.e. "P:0.05"). For the PID control task, <b>PID_CONTORL</b> starts the task: robot going towards the wall and stopping at a certin setpoint (300mm). After the task as been performed, <b>GET_VALS</b> command allows the user to retrieve the stored data in the Artemis of the stunt. Using the notification handler, the values are stored in corresponding arrays in python and later graphed. </p>
+                        <p>In order to implement and test the PID controller through my labtop, I set up a few bluetooth commands for communication between the robot and the computer. <b>SET_VALS</b> allows the user to change the PID controller values on the jupyter notebook directly, rather than uploading the .ino code to Artemis everytime one value is changed. </p>
+                        <center><img class="center" src="assets/img/lab6/prelab.png" width = "500"/></center>
+
+                        <p>The user has to define which controller it is changing and the value corresponding to the controller. (i.e. "P:0.05"). For the PID control task, <b>PID_CONTORL</b> starts the task: robot going towards the wall and stopping at a certin setpoint (300mm). </p>
+                        <center><img class="center" src="assets/img/lab6/prelab1.png" width = "420"/></center>
+
+                        <p>After the task as been performed, <b>GET_VALS</b> command allows the user to retrieve the stored data in the Artemis of the stunt. Using the notification handler, the values are stored in corresponding arrays in python and later graphed. </p>
+                        <center><img class="center" src="assets/img/lab6/prelab2.png" width = "600"/></center>
 
                         <h2 class="section-heading">Task A: Position Control</h2>
-                        <p>For data collection during the robot performance. I stored the individual data points in the Artemis while the tasking is performed, and the aggregate data was sent to the computer via bluetooth after the task has ended. I used arrays of size 150 (it was never all used up) to store time, motor PWM input and distance sensor values. Initially, I only used the P controller, but found that it always stopped about 30 mm away from the setpoint. Thus, I finalized with PD controller,
+                        <p>For data collection during the robot performance. I stored the individual data points in the Artemis while the tasking is performed, and the aggregate data was sent to the computer via bluetooth after the task has ended. I used arrays of size 150 (it was never all used up) to store time, motor PWM input and distance sensor values. Initially, I only used the P controller, but found that it always stopped about 30 mm away from the setpoint. Thus, I finalized with PD controller. During the task, the function <b>pid()</b> calculates the new speed, </p>
+                        <center><img class="center" src="assets/img/lab6/pid.png" width = "500"/></center>
+                        <p>and uses the function <b>speed_limit()</b> to ensure that the roobt still moves even if it is bigger than the maximum or smaller than the minimum.</p>
+                        <center><img class="center" src="assets/img/lab6/prelab3.png" width = "420"/></center>
+
+                        <h2 class="section-heading">P Control</h2>
+                        <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.06. When implemented and tested, however, there was a consistent error between the setpoint distance and the actual stopping distance. Below are the videos and the resulting graphs from the test. </p>
+
+                        <h2 class="section-heading">PD Control</h2>
+                        <p>To additionally implement a derivative control, I calculated the derivative and implemented it in the <b>PID_control</b>. I chose the derivative control since it is relatively easy to implement and I don't have to worry about the integral control. </p>
+                        <p>The finalized Kp and Kd values were Kp = 0.05, Kd = 0.08. Below are the graphs and the implementation video. </p>
 
                         <p></p>
 
