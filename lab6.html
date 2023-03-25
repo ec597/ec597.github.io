@@ -52,6 +52,12 @@
 
                         <h2 class="section-heading">P Control</h2>
                         <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.06. When implemented and tested, however, there was a consistent error between the setpoint distance and the actual stopping distance. Below are the videos and the resulting graphs from the test. </p>
+                        <center><img class="center" src="assets/img/lab6/motor_p1.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p1.png" width = "300"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab6/motor_p2.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p2.png" width = "300"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab6/motor_p3.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p3.png" width = "300"/></center>
+                        <center><iframe width="600" height="350" src="https://www.youtube.com/embed/hKMIBmt_PNg" title="P controller" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
                         <h2 class="section-heading">PD Control</h2>
                         <p>To additionally implement a derivative control, I calculated the derivative and implemented it in the <b>PID_control</b>. I chose the derivative control since it is relatively easy to implement and I don't have to worry about the integral control. </p>
