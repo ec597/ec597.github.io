@@ -51,13 +51,21 @@
                         <center><img class="center" src="assets/img/lab7/kf_m.png" width = "400"/></center>
 
                         <h2 class="section-heading">Initializing KF</h2>
-                        <p>With the newly found d and m values, I plugged them into the matrices to finalize the KF setup. Since the KF needs process and measurement noise covariance matrices, I used the following equations to approximate the noise covariance values using the sampling rate. Since my sampling rate is ~0.18s, I substituted that value to finalize all matrices needed for the KF implementation.</p>
+                        <p>With the newly found d and m values, I plugged them into the matrices to finalize the KF setup.</p>
+                        <center><img class="center" src="assets/img/lab7/kf_A.png" width = "250"/><img class="center" src="assets/img/lab7/kf_B.png" width = "190"/></center>
+                        <p>Since the KF needs process and measurement noise covariance matrices, I used the following equations to approximate the noise covariance values using the sampling rate. Since my sampling rate is ~0.18s, I substituted that value to finalize all matrices needed for the KF implementation.</p>
+                        <center><img class="center" src="assets/img/lab7/sig_lec.png" width = "400"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab7/sigu.png" width = "500"/></center>
+                        <p></p>
+                        <center><img class="center" src="assets/img/lab7/sigz.png" width = "250"/></center>
+
 
 
 
 
                         <h2 class="section-heading">Implementing KF in Jupyter</h2>
-                        <p>For the sigma matrices, I chose appropriate covariance matrices. Thus, now that the Kalman filter is ready, I iterated over the ToF values that I already had and applied the KF code. </p>
+                        <p>Now that the Kalman filter is ready, I iterated over the ToF values that I already had and applied the KF code. </p>
                         <p>This is the result of the Kalman filter. The blue line is the raw data taken from the sensor on the car, and the orange line is the data produced by the KF. As shown, the blue and orange line values are very similar to each other, which is what I wanted since I have enough confidence in my ToF sensor values. </p>
 
                         <h2 class="section-heading">Extrapolation</h2>
