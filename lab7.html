@@ -61,8 +61,19 @@
                         <center><img class="center" src="assets/img/lab7/sigz.png" width = "250"/></center>
 
                         <h2 class="section-heading">Implementing KF in Jupyter</h2>
-                        <p>Now that the Kalman filter is ready, I iterated over the ToF values that I already had from lab 6 and applied the KF code. </p>
-                        <p>This is the result of the Kalman filter. The blue line is the raw data taken from the sensor on the car, and the orange line is the data produced by the KF. As shown, the blue and orange line values are very similar to each other, which is what I wanted since I have enough confidence in my ToF sensor values. </p>
+                        <p>Now that the Kalman filter is ready, I iterated over the ToF values that I already had from lab 6 and applied the KF code. Through using the following functions and codes, I was able to implement the kalman filter onto the data that I collected during the PID control lab. I first initialized all the matrices (A, B, C and the noise covariance matrices), </p>
+                        <center><img class="center" src="assets/img/lab7/code1.png" width = "500"/></center>
+                        <p>and used the <b>kf</b> function to get the filtered data.</p>
+                        <center><img class="center" src="assets/img/lab7/code2.png" width = "500"/></center>
+
+                        <p>This is the result of the Kalman filter. The blue line is the raw data taken from the sensor on the car, and the orange line is the data produced by the KF. I used the kalman filter using different sigma values for different level of uncertainty of the model and the sensors. </p>
+                        <center><img class="center" src="assets/img/lab7/high_sensor.png" width = "500"/></center>
+                        <p>This is when I gave more trust to the sensor output. Thus, it believed in the sensor output values, which is why the kalman filter data and the raw data are very similar to each other. </p>
+                        <center><img class="center" src="assets/img/lab7/high_model.png" width = "500"/></center>
+                        <p>When higher trust/certainty is given to the model, the filtered values deviate from the raw data, especially during the overshoot portion of the graph. It slightly increased the overshoot time and magnitude and slowly converged to the constant equilibrium distance. </p>
+                        <center><img class="center" src="assets/img/lab7/med.png" width = "500"/></center>
+                        <p>I ended up using the standard values that the lecture recommended using the sensor ranging time, because I didn't trust the sensor too much due to its frequency inaccuracies, but the model could also be faulty sometimes. Thus, by using the default values of uncertainties, I can later experience the balance of accuracy between the sensor and the model and decide later on by tweaking the individual sigma values. </p>
+
 
                         <h2 class="section-heading">Extrapolation</h2>
 
