@@ -47,8 +47,6 @@
                         <center><img class="center" src="assets/img/lab4/task1-2.png" width = "700"/></center>
                         <p>When the sensor is lying flat, the x and y accelerometer data are 0 while the z acceleration is the gravitational acceleration (~1000mg).</p>
                         <center><img class="center" src="assets/img/lab4/task1-3.png" width = "700"/></center>
-                        <p>When plotted onto the Serial plotter in Arduino, it was noted that the accelerometer data was a bit more noisy than the gyroscope data, which led to implementing a LPF on accelerometer data, as outlined below. </p>
-                        <center><img class="center" src="assets/img/lab4/task1-4.png" width = "700"/></center>
 
                         <h2 class="section-heading">Accelerometer</h2>
                         <p>With the accelerometer data, we can only calculate the pitch and roll values using the equations from lecture. </p>
@@ -61,7 +59,7 @@
                         <center><img class="center" src="assets/img/lab4/task2-5.png" width = "330"/><img class="center" src="assets/img/lab4/task2-6.png" width = "330"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab4/task2-7.png" width = "330"/><img class="center" src="assets/img/lab4/task2-8.png" width = "330"/></center>
-                        <p>As one can see, there aren't that much noise in the IMU accelerometer data, which I believe is due to the low pass filter that is already implemented. Thus, I do not need to implement an additional low pass filter. </p>
+                        <p>As one can see, there aren't that much noise in the IMU accelerometer data, since the frequency is mostly under 0.1 Hz, which I believe is due to the low pass filter that is already implemented. Thus, I do not need to implement an additional low pass filter. </p>
 
                         <h2 class="section-heading">Gyroscope</h2>
                         <p>With the gyroscope, pitch, roll and yaw values can be calculated using the following equations from lecture. </p>
@@ -69,7 +67,7 @@
                         <center><img class="center" src="assets/img/lab4/task3-2.png" width = "200"/></center>
                         <center><iframe width="500" height="300" src="https://www.youtube.com/embed/tScjid11Bj0" title="GYR data" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
-                        <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. The final equations are shown below. </p>
+                        <p>When compared with the accelerometer data, the gyroscope was more prone to errors when exposed to drift and quick vibrations. Furthermore, the range of the IMU is +/- 90 degrees for pitch and roll (as seen in data below), so we opted for a complimentary filter to ensure stable and accurate pitch and roll measurements. The final equations are shown below. I used 90% of the gyroscope data and 10% of the accelerometer data to find the complementary pitch/roll values. </p>
                         <center><img class="center" src="assets/img/lab4/task3-3.png" width = "350"/></center>
                         <center><img class="center" src="assets/img/lab4/task3-4.png" width = "350"/></center>
                         <p></p>
