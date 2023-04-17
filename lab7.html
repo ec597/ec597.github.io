@@ -60,7 +60,7 @@
                         <p></p>
                         <center><img class="center" src="assets/img/lab7/sigz.png" width = "250"/></center>
 
-                        <h2 class="section-heading">Implementing KF in Jupyter and Extrapolating the PID data</h2>
+                        <h2 class="section-heading">Implementing KF in Jupyter</h2>
                         <p>Now that the Kalman filter is ready, I iterated over the ToF values that I already had from lab 6 and applied the KF code. Through using the following functions and codes, I was able to implement the kalman filter onto the data that I collected during the PID control lab. I first initialized all the matrices (A, B, C and the noise covariance matrices), </p>
                         <center><img class="center" src="assets/img/lab7/code1.png" width = "500"/></center>
                         <p>and used the <b>kf</b> function to get the filtered data.</p>
@@ -74,7 +74,9 @@
                         <center><img class="center" src="assets/img/lab7/med.png" width = "500"/></center>
                         <p>I ended up using the standard values that the lecture recommended using the sensor ranging time, because I didn't trust the sensor too much due to its frequency inaccuracies, but the model could also be faulty sometimes. Thus, by using the default values of uncertainties, I can later experience the balance of accuracy between the sensor and the model and decide later on by tweaking the individual sigma values. </p>
 
-
+                        <h2 class="section-heading">Extrapolation</h2>
+                        <p>I chose to implement the extrapolation method to my sensor data since the kf filter implementation was not stable enought. The linear extrapolation can speed up the controller since the robot does not have to wait for the next ToF sensor to change the motor PWM values; rather, it can estimate its current position using linear extrapolation and use the controller even when the ToF sensor is not updated. </p>
+                        <p>Using the code snippets attached below, I got the robot to conduct the pid controller, using the extrapolation method this time. </p>
 
 
 
