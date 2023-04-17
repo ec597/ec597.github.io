@@ -23,7 +23,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>Lab 8: Stunts!</h1>
-                            <h2></h2>
+                            <h2>This lab involved using the past labs (lab 6 and 7 specifically) to control the car's stunt. </h2>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,13 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading"></h2>
+                        <h2 class="section-heading">Stunt A</h2>
+                        <p>In my case, since I chose Task A in PID control, I did a stunt of flipping the car. This stunt was executed in the lab space, where we had to start < 4m from the wall at the designated start lin, drive forward until it reaches the sticky mat, flips and drives back to the start line</p>
+                        <p>Based on what the past students and my lab group members did, I first set the motor PWM value to 250 to drive forward as quickly as possible. </p>
+
+                        <h2 class="section-heading">Implementing into the robot</h2>
+                        <p>Due to complications in the implementation, I decided to not use the Kalman Filter during this task and make it as simple as possible. The car first drives as fast as it can towards the wall, and when the ToF sensor reaches certain value, it sends a backwards signal of 250 PWM value and returns back towards the starting line. The exact ToF value was decided through *multiple* trial and error. </p>
+                        <p>Below are the videos of the stunts trials and the distance vs. time plot of the robot only when it is moving straight towards the wall (the data during the flip and going back to the starting point is not applicable).</p>
                         <p></p>
                     </div>
                 </div>
