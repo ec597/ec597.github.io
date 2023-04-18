@@ -39,9 +39,12 @@
                         <p>Based on what the past students and my lab group members did, I first set the motor PWM value to 250 to drive forward as quickly as possible. </p>
 
                         <h2 class="section-heading">Implementing into the robot</h2>
-                        <p>Due to complications in the implementation, I decided to not use the Kalman Filter during this task and make it as simple as possible. The car first drives as fast as it can towards the wall, and when the ToF sensor reaches certain value, it sends a backwards signal of 250 PWM value and returns back towards the starting line. The exact ToF value was decided through *multiple* trial and error. </p>
-                        <p>Below are the videos of the stunts trials and the distance vs. time plot of the robot only when it is moving straight towards the wall (the data during the flip and going back to the starting point is not applicable).</p>
-                        <p></p>
+                        <p>Due to complications in the implementation, I decided to not use the Kalman Filter during this task and make it as simple as possible. The car first drives as fast as it can towards the wall, and when the ToF sensor value reaches certain point, it sends a backwards signal of 250 PWM value and returns back towards the starting line. The exact ToF value was decided through *multiple* trial and error. </p>
+                        <center><img class="center" src="assets/img/lab8/code.png" width = "500"/></center>
+                        <p>Below are the videos of the full stunt trials and the distance vs. time plot of the robot only when it is moving straight towards the wall (the data during the flip and going back to the starting point is not applicable for ToF sensors).</p>
+                        <center><iframe width="600" height="300" src="https://www.youtube.com/embed/B5oFUZu9_BE" title="Stunt 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+
                     </div>
                 </div>
             </div>
