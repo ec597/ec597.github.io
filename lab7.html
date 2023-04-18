@@ -77,8 +77,10 @@
                         <h2 class="section-heading">Extrapolation</h2>
                         <p>I chose to implement the extrapolation method to my sensor data since the kf filter implementation was not stable enought. The linear extrapolation can speed up the controller since the robot does not have to wait for the next ToF sensor to change the motor PWM values; rather, it can estimate its current position using linear extrapolation and use the controller even when the ToF sensor is not updated. </p>
                         <p>Using the code snippets attached below, I got the robot to conduct the pid controller, using the extrapolation method this time. </p>
-
-
+                        <center><img class="center" src="assets/img/lab7/extrapolate.png" width = "500"/></center>
+                        <p>Using this method, the robot can estimate the current position from the wall in between the time the ToF sensor updates, which takes a significant amount of time considering the robot's fast speed. Thus, the extrapolate method is called during the time ToF sensor is updating, and using that value the pid controller decides on the next PWM motor value to change. </p>
+                        <p>Below are the videos and the distance vs time graph from the pid controller with the extrapolation method this time. </p>
+                        <p></p>
 
                     </div>
                 </div>
