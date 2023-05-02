@@ -37,12 +37,28 @@
                         <h2 class="section-heading">Control</h2>
                         <p>Because I was pressed on time, I opted to open loop control to rotate the robot. For more accurate ToF sensor outputs, the open loop consisted of rotating for certain amount and stopping for data acquisition. After multiple trial and errors, I ended up rotating the robot for 85ms and then stopping for total of 25 data points for each position in the map. The code snippet below shows the lab. </p>
                         <center><img class="center" src="assets/img/lab9/code.png" width = "350"/></center>
+                        <p>This is the video of the robot rotating in open loop. </p>
+                        <center></center>
 
+                        <h2 class="section-heading">Mapping</h2>
                         <p>For each stop, the robot saved the ToF sensor readings as well as the IMU values to get the yaw of the robot. Since the IMU measures the angular speed of the robot, we need to integrate IMU's z-axis values to get the angular position of the robot. The code for data acquisition is shown below.</p>
                         <center><img class="center" src="assets/img/lab9/code2.png" width = "350"/></center>
 
-                        The collected data for each trial was stored in an array and sent at the end of the trial. I used a different command in jupyter just for the data collection, and stored it in python through the callback function. The final data that was sent to python was just the tof sensor and the yaw values in degrees.
+                        <p>The collected data for each trial was stored in an array and sent at the end of the trial. I used a different command in jupyter just for the data collection, and stored it in python through the callback function. The final data that was sent to python was just the tof sensor and the yaw values in degrees.</p>
 
+                        <h2 class="section-heading">Reading Distances</h2>
+                        <p>For each point of measurement [(-3,-2), (0,3), (5,3), (5,-3)], the robot rotates at relatively constant velocity, collects ToF and yaw values for each position, and after the collection is finished it sends the measured data through bluetooth. The images below are polar graphs of the distance values read for each point. For more accurate map, multiple trials were measured. </p>
+                        <center><p><b>(-3,-2)</b></p></center>
+                        <center><img class="center" src="assets/img/lab9/_3_2.png" width = "350"/></center>
+                        <center><p><b>(0,3)</b></p></center>
+                        <center><img class="center" src="assets/img/lab9/03.png" width = "350"/></center>
+                        <center><p><b>(5,3)</b></p></center>
+                        <center><img class="center" src="assets/img/lab9/53.png" width = "350"/></center>
+                        <center><p><b>(5,-3)</b></p></center>
+                        <center><img class="center" src="assets/img/lab9/5_3.png" width = "350"/></center>
+
+                        <h2 class="section-heading">Mapping finished</h2>
+                        
 
                     </div>
                 </div>
