@@ -38,7 +38,7 @@
                         <p>Because I was pressed on time, I opted to open loop control to rotate the robot. For more accurate ToF sensor outputs, the open loop consisted of rotating for certain amount and stopping for data acquisition. After multiple trial and errors, I ended up rotating the robot for 85ms and then stopping for total of 25 data points for each position in the map. The code snippet below shows the lab. </p>
                         <center><img class="center" src="assets/img/lab9/code.png" width = "350"/></center>
                         <p>This is the video of the robot rotating in open loop. </p>
-                        <center></center>
+                        <center><iframe width="442" height="786" src="https://www.youtube.com/embed/FhGtCUZK1B0" title="open loop rotation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
                         <h2 class="section-heading">Mapping</h2>
                         <p>For each stop, the robot saved the ToF sensor readings as well as the IMU values to get the yaw of the robot. Since the IMU measures the angular speed of the robot, we need to integrate IMU's z-axis values to get the angular position of the robot. The code for data acquisition is shown below.</p>
@@ -58,8 +58,15 @@
                         <center><img class="center" src="assets/img/lab9/5_3.png" width = "350"/></center>
 
                         <h2 class="section-heading">Mapping finished</h2>
-                        
+                        <p>To combine all four measurement points to create the whole map of the room, I needed to convert all data points to Cartesian coordinates and add the x and y offset. First, since given coordinates are in feet, I converted all of them to mm by multiplying with a factor of 304.8 mm/ft. The code used to convert is attached below, which I borrowed from last year's student. </p>
+                        <center><img class="center" src="assets/img/lab9/map.png" width = "700"/></center>
+                        <p>The image below is the accumulated data points of the four measuring points. </p>
+                        <center><img class="center" src="assets/img/lab9/mapping.png" width = "500"/></center>
+                        <p>From this, we can conclude that the robot's measurment for long distances are very unreliable. When the distance from the wall is more than 2500mm, such as the lonely orange dot on the left bottom side of the map, the measurements tend to be very off. Furthermore, the robot is very inaccurate when it is facing the corners of the wall or the box, resulting in slightly curved-looking data points.  </p>
 
+                        <p>The whole data points with the outline of the actual map is seen below. The black outline represents the actual map of the room, whereas the blue is the approximate outline that my robot created. </p>
+                        <center><img class="center" src="assets/img/lab9/final_map.png" width = "500"/></center>
+                        <p></p>
                     </div>
                 </div>
             </div>
