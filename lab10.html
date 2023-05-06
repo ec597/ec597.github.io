@@ -50,7 +50,11 @@
                         <center><img class="center" src="assets/img/lab10/compute_control.png" width = "600"/></center>
 
                         <p><b>Odometry Motion Model</b></p>
-                        <p></p>
+                        <p>Next step is to compute the probability that the robot would end up in the current pose, given a control input and previous pose. We used the gaussian function and multiplied the probability of (rot1, trans, rot2) to get the final odometry motion probability.  </p>
+                        <center><img class="center" src="assets/img/lab10/prob.png" width = "550"/></center>
+                        <p>The code implementation is as follows. </p>
+                        <center><img class="center" src="assets/img/lab10/odom_motion_model.png" width = "650"/></center>
+
 
                         <p><b>Prediction Step</b></p>
                         <p></p>
