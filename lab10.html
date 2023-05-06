@@ -23,7 +23,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>Lab 10: Localization (SIM)</h1>
-                            <h2>For this lab, the robot, at several different spots, uses the ToF and IMU sensors to create a map of the surroundings. </h2>
+                            <h2>This lab implements gril localization in the simulation robot using Bayes Filter.</h2>
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,27 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading">Pre-lab</h2>
+                        <h2 class="section-heading">Background Information</h2>
+                        <p>The Pre-lab portion of the lab consisted of learning the Bayes Filter in grid localization. The codebase for the simulation was provided in class and I had to implement the code just for the grid localization of the virtual robot.</p>
+                        <p>The robot state is given as an array of [x, y, theta], defined as the robot's pose. With this, the purpose of the Bayes Filter is to update the belief in the robot (the probability that the robot is in a certain state) using the sensor values. Thus, the Bayes Filter algorithm allows us to predict the robot's position and update its position that reduces its uncertainty. </p>
+
+                        <h2 class="section-heading">Code Implementation</h2>
+
+                        <p><b>Compute Control</b></p>
                         <p></p>
+
+                        <p><b>Odometry Motion Model</b></p>
+                        <p></p>
+
+                        <p><b>Prediction Step</b></p>
+                        <p></p>
+
+                        <p><b>Sensor Model</b></p>
+                        <p></p>
+
+                        <p><b>Update Step</b></p>
+                        <p></p>
+
                     </div>
                 </div>
             </div>
