@@ -55,14 +55,24 @@
                         <p>The code implementation is as follows. </p>
                         <center><img class="center" src="assets/img/lab10/odom_motion_model.png" width = "650"/></center>
 
-
                         <p><b>Prediction Step</b></p>
-                        <p></p>
+                        <p>The prediction step utilized the current and previous position of the robot to create the belief_bar in the algorithm. I used <b>six</b> nested for loops: first three for the previous pose and the last three for current pose. The function calculated the probability of getting from the previous position to the current position and multiplied it with the belief in the previous step. After summing that value for each position, it was stored in loc.bel_bar after normalizing the sum. </p>
+                        <p>The code implemention is as follows. </p>
+                        <center><img class="center" src="assets/img/lab10/belbar.png" width = "650"/></center>
 
                         <p><b>Sensor Model</b></p>
-                        <p></p>
+                        <p>Now that the prediction step is over, it is time to update the robot's position. This step uses the gaussian function once again, like the motion model, but for the sensor output values. It computes the likelihood of getting accurate sensor readings given the robot's pose. With the given sigma value, I looped through the 18 sensor measurements and calculated the probability that the sensor readings are accurate. Then, the 18 probability values are appended to thr prob array and later multiplied all together in update_step().</p>
+                        <p>The implemented code is shown below. </p>
+                        <center><img class="center" src="assets/img/lab10/sensormodel.png" width = "650"/></center>
 
                         <p><b>Update Step</b></p>
+                        <p>With three nested-loops, I iterated through every possible current poses of the virtual robot and multiplied the intermediate belief (output of the prediction step) with the sensor readings probability from sensor model. Then I updated the belief at each pose with the multiplied value. After the for loops are over, the probability is again normalized and stored in loc.bel.</p>
+                        <p>This is the update_step function.</p>
+                        <center><img class="center" src="assets/img/lab10/update.png" width = "650"/></center>
+
+                        <h2 class="section-heading">Results</h2>
+                        <p>The Bayes filter implementation results are shown below, where green is the true pose and blue is the belief. </p>
+                        <center><img class="center" src="assets/img/lab10/final.png" width = "650"/></center>
                         <p></p>
 
                     </div>
