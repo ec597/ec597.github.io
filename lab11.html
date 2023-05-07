@@ -23,7 +23,7 @@
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>Lab 11: Localization (REAL)</h1>
-                            <h2>For this lab, the robot, at several different spots, uses the ToF and IMU sensors to create a map of the surroundings. </h2>
+                            <h2>With he provided Bayes Filter, this lab implements localization of the robot like lab 10, but with a real robot this time.  </h2>
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,20 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading">Pre-lab</h2>
-                        <p></p>
+                        <h2 class="section-heading">Bayes Filter and Pre-Lab</h2>
+                        <p>We were provided with the Bayes Filter implementation file, lab11_sim.ipynb file that hows the Bayes Filter implementation in simulation, and lab11_real.ipynb file for communication between the real robot and the simulation. </p>
+
+                        <p><b>Simulation</b></p>
+                        <p>First, I used the virtual robot to test the Bayes Filter implementation that was provided in lab. Attached below is the result, with odom, ground truth and belief. It is very similar to the result that I got from lab 10. </p>
+                        <center><img class="center" src="assets/img/lab11/sim.png" width = "550"/></center>
+
+                        <h2 class="section-heading">Implementation of Bayes Filter in real robot. </h2>
+                        <p><b>Coding implementation</b></p>
+                        <p><b>Running localization in (-3ft, -2ft, 0 deg)</b></p>
+                        <p><b>Running localization in (0ft, 3ft, 0 deg)</b></p>
+                        <p><b>Running localization in (5ft, 3ft, 0 deg)</b></p>
+                        <p><b>Running localization in (5ft, -3ft, 0 deg)</b></p>
+
                     </div>
                 </div>
             </div>
