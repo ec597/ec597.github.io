@@ -54,7 +54,7 @@
 
                         <h2 class="section-heading">P Control</h2>
                         <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.09. If the Kp value was bigger, the velocity of the car was higher, but the car was very close to crashing due to a large overshoot. For example, a Kp value above 0.18 made the car crash to the wall. </p>
-                        <p>Starting at Kp value of 0.19, I slowly decreased the Kp value that will allow me to have stable results. The reason why values near 0.19 was too unstable is due to the long update time for the ToF sensors (based on the data collected, I gathered ~100 tof points during one trial that took about 8 seconds -- meaning the update time was around 80 ms.)  Below are the videos and the resulting graphs from the test. </p>
+                        <p>Starting at Kp value of 0.19, I slowly decreased the Kp value that will allow me to have stable results. The reason why values near 0.19 was too unstable is due to the long update time for the ToF sensors <b>(based on the data collected, I gathered ~100 tof points during one trial that took about 8 seconds -- meaning the update time was around 80 ms.)</b>  Below are the videos and the resulting graphs from the test. </p>
                         <center><img class="center" src="assets/img/lab6/motor_p1.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p1.png" width = "300"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab6/motor_p2.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p2.png" width = "300"/></center>
