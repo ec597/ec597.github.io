@@ -44,6 +44,11 @@
 
                         <h2 class="section-heading">Implementation of Bayes Filter in real robot. </h2>
                         <p><b>Coding implementation</b></p>
+                        <p>First, I implemented PD control for the angle to stop and measure distance every 20 degrees in rotation, so that in total I get 18 data points during a 360 degrees turn. Below are the code snippets and the video of the robot rotating with PD control. </p>
+                        <center><img class="center" src="assets/img/lab11/code.png" width = "450"/></center>
+                        <p></p>
+                        <center><iframe width="600" height="300" src="https://www.youtube.com/embed/CqtGt3dtm4s" title="360 turn (PD control)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <p>During this step, we are going to use perform_observation_loop() to get the distance data per 20 degrees turn and apply it using the Bayes filter. The code implementation is shown below. </p>
                         <p><b>Running localization in (-3ft, -2ft, 0 deg)</b></p>
                         <p><b>Running localization in (0ft, 3ft, 0 deg)</b></p>
                         <p><b>Running localization in (5ft, 3ft, 0 deg)</b></p>
