@@ -54,7 +54,7 @@
 
                         <h2 class="section-heading">P Control</h2>
                         <p>I first started with a P control, since it is the most simple controller choice. After a lot of trial and error, I finalized with a Kp value of 0.09. If the Kp value was bigger, the velocity of the car was higher, but the car was very close to crashing due to a large overshoot. For example, a Kp value above 0.18 made the car crash to the wall. </p>
-                        <p>Starting at Kp value of 0.19, I slowly decreased the Kp value that will allow me to have stable results. The reason why values near 0.19 was too unstable is due to the long update time for the ToF sensors <b>(based on the data collected, I gathered ~100 tof points during one trial that took about 8 seconds -- meaning the update time was around 80 ms.)</b>  Below are the videos and the resulting graphs from the test. </p>
+                        <p>Starting at Kp value of 0.19, I slowly decreased the Kp value that will allow me to have stable results. The reason why values near 0.19 was too unstable is due to the long update time for the ToF sensors (based on the data collected, I gathered ~100 tof points during one trial that took about 8 seconds -- meaning the update time was around 80 ms.)  Below are the videos and the resulting graphs from the test. </p>
                         <center><img class="center" src="assets/img/lab6/motor_p1.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p1.png" width = "300"/></center>
                         <p></p>
                         <center><img class="center" src="assets/img/lab6/motor_p2.png" width = "300"/><img class="center" src="assets/img/lab6/distance_p2.png" width = "300"/></center>
@@ -76,6 +76,7 @@
 
                         <h2 class="section-heading">Conclusion</h2>
                         <p>For each controller test, all three trials gave similar results. For P controller, there was a larger overshoot, and therefore longer time to stop at the setpoint. In the video, it can be seen through the the back-and-forth motion that the robot makes around the 300 mm point. Comparatively, the PD controller had a smaller overshoot and found its position relatively quickly than the P controller. The P controller took around 5.5 seconds to stabilize and the PD controller took around 4.5 seconds to stabilize.</p>
+                        <p>Ultimately, the maximum speed acheived was <b>0.7 m/s, with an average of 0.3 m/s</b> throughout the run. The major setback to more efficient pid control was the very slow sampling rate of <b>~80 ms for 1 sensor reading</b> that limited the efficiency of control.</p>
                         <p>I only sent the collected data once after the task was complete since the task was short (maximum 8 seconds - including steady state) and there were only 4 arrays of 150 data points to send at the end, although I never used the full capacity. However, if I have a longer task later on, I would have to send the data during the task if I need to. </p>
                         <p></p>
 
