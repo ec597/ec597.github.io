@@ -34,26 +34,58 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <h2 class="section-heading">WEBSITE WORK IN PROGESS</h2>
                         <h2 class="section-heading">Bayes Filter and Pre-Lab</h2>
                         <p>We were provided with the Bayes Filter implementation file, lab11_sim.ipynb file that hows the Bayes Filter implementation in simulation, and lab11_real.ipynb file for communication between the real robot and the simulation. </p>
 
                         <p><b>Simulation</b></p>
-                        <p>First, I used the virtual robot to test the Bayes Filter implementation that was provided in lab. Attached below is the result, with odom, ground truth and belief. It is very similar to the result that I got from lab 10. </p>
+                        <p>First, I used the virtual robot to test the Bayes Filter implementation that was provided in lab. Attached below is the result, with odom, ground truth and belief. It is very similar to the result that I got from lab 10, where the ground truth and the belief are not too far off. </p>
                         <center><img class="center" src="assets/img/lab11/sim.png" width = "550"/></center>
 
                         <h2 class="section-heading">Implementation of Bayes Filter in real robot. </h2>
+
                         <p><b>Coding implementation</b></p>
-                        <p>First, I implemented PD control for the angle to stop and measure distance every 20 degrees in rotation, so that in total I get 18 data points during a 360 degrees turn. Below are the code snippets and the video of the robot rotating with PD control. </p>
+                        <p>First, I implemented PD control for the angle to stop and measure distance every 20 degrees in rotation for the observation loop, so that in total I get 18 data points during a 360 degrees turn. Below are the code snippet of PD angle control and the video of the robot rotating in 20 degrees increments. </p>
                         <center><img class="center" src="assets/img/lab11/code.png" width = "450"/></center>
                         <p></p>
-                        <center><iframe width="600" height="300" src="https://www.youtube.com/embed/CqtGt3dtm4s" title="360 turn (PD control)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
-                        <p>During this step, we are going to use perform_observation_loop() to get the distance data per 20 degrees turn and apply it using the Bayes filter. The code implementation is shown below. </p>
-                        <p><b>Running localization in (-3ft, -2ft, 0 deg)</b></p>
-                        <p><b>Running localization in (0ft, 3ft, 0 deg)</b></p>
-                        <p><b>Running localization in (5ft, 3ft, 0 deg)</b></p>
-                        <p><b>Running localization in (5ft, -3ft, 0 deg)</b></p>
+                        <center><iframe width="600" height="300" src="https://www.youtube.com/embed/40H5Z6B3jMA" title="360 turn (PD control)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+                        <p>Next, we are going to get the data from the observation loop and use Bayes Filter provided to figure out our belief. One issue that I had was that when I tried to integrate my code for communicating to the robot within the perform_observation_loop function, it kept giving me an error. So, per Anya's advice, I opted to get the data separately and input the array of distance values directly as shown below. </p>
+                        <center><img class="center" src="assets/img/lab11/callback.png" width = "350"/></center>
+                        <p>This is the callback function that was used to collect distance data after 18 20-degree turns. The measurements are initially stored in an array in the Artemis and sent when the 360 degrees turn is over. </p>
+                        <center><img class="center" src="assets/img/lab11/performance.png" width = "550"/></center>
+                        <p>Using the data retrieved with the callback function, the array of 18 measurments are changed to meters and returned in the perform_observation_loop like shown above.</p>
 
+                        <h2 class="section-heading">Results</h2>
+                        <p><b>Running localization in (-3ft, -2ft, 0 deg)</b></p>
+                        <center><img class="center" src="assets/img/lab11/-3-2.png" width = "550"/></center>
+                        <p></p>
+                        <center>>> Belief pose: (-1.219, -0.914, -20.000)<<</center>
+                        <center>>> Ground Truth pose: (-0.914, -0.610, 0.000)<<</center>
+                        <p>This was the most unsuccessful run of the four points, since it had both translational (x and y) and angular error. This is due to inaccurate ToF sensor readings that we also saw in lab 9, where the further the distance readings are, the more inaccurate they are.</p>
+
+                        <p><b>Running localization in (0ft, 3ft, 0 deg)</b></p>
+                        <center><img class="center" src="assets/img/lab11/03.png" width = "550"/></center>
+                        <p></p>
+                        <center>>> Belief pose: (0.000, 0.610, -20.000)<<</center>
+                        <center>>> Ground Truth pose: (0.000, 0.914, 0.000)<<</center>
+                        <p>This localization had translational error in the y-axis and angular error of 20 degrees, just like the one above. The errors are probably due to the robot not being able to rotate in place. Also seen on the video, the robot sometimes drifts downwards due to unreliable and uneven motors. </p>
+
+                        <p><b>Running localization in (5ft, 3ft, 0 deg)</b></p>
+                        <center><img class="center" src="assets/img/lab11/53.png" width = "550"/></center>
+                        <p></p>
+                        <center>>> Belief pose: (1.524, 0.610, -20.000)<<</center>
+                        <center>>> Ground Truth pose: (1.524, 0.914, 0.000)<<</center>
+                        <p>Again, this run had exactly the same error as the one above: y-translational error and angular error. </p>
+
+                        <p><b>Running localization in (5ft, -3ft, 0 deg)</b></p>
+                        <center><img class="center" src="assets/img/lab11/5-3.png" width = "550"/></center>
+                        <p></p>
+                        <center>>> Belief pose: (1.524, -0.914, 0.000)<<</center>
+                        <center>>> Ground Truth pose: (1.524, -0.914, 0.000)<<</center>
+                        <p>This run was the most successful localization out of the four points since the belief pose was exactly on the ground truth pose. (the green dot -- ground truth pose is under the blue dot.) I believe that the higher accuracy for this trial is due to more walls that are closer to the robot, so the ToF sensors had more accurate measurements. </p>
+
+                        <h2 class="section-heading">Conclusion</h2>
+                        <p>With this lab, I found that due to the -y-direction drift that my robot has during the localization rotation, the belief has the tendency to have lower y-values compared to the ground truth pose (for 3/4 localization runs). The most inaccurate one was on the left bottom corner of the arena, so I will probably not run localization during the first fourth portion of the next lab. Also, one more thing to note for the next lab is that the x position belif seems pretty accurate, for most of the points. </p>
+                        <p></p>
                     </div>
                 </div>
             </div>
