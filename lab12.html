@@ -40,8 +40,9 @@
                         <center><img class="center" src="assets/img/lab12/intro.png" width = "550"/></center>
 
                         <p><b>My method</b></p>
-                        <p>As mentioned in the previous lab (Lab 11) my robot was not good in localization, especially near the walls/corners. Thus, I opted to use PID control for most of the waypoints and use localization at the very end for the final position. Also, PID control was easier and less time consuming to implement. </p>
+                        <p>As mentioned in the previous lab (Lab 11) my robot was not good in localization in certain areas in the arena -- mainly the left bottom corner. Thus, I opted to use PID control for most of the waypoints and use localization at the bottom right corner as well as the top portion of the lab. This is mostly because PID control is easier and less time consuming to implement and has the most successful rate throughout my labs. </p>
 
+                        <p>To maximize accuracy, I decided to perfectly tune my 90 degrees turn and straight movements for the whole duration. Thus, rather than going on an angle from the first waypoint to the second, I would first go straight, turn 90 degrees and then stop at the second waypoint. This is definitely a less efficient way to get all the spots, but due to lacking motor capacities, it is the most reliable method. </p>
                         <h2 class="section-heading">Code Implementation</h2>
                         <p>Below are the code snippets that I used for this lab. </p>
                     </div>
