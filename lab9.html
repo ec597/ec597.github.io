@@ -35,10 +35,21 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <h2 class="section-heading">Control</h2>
+                        <p>I originally did this lab with open loop, but later updated it with orientation control. Thus, it allowed me to compare the two methods side by side. </p>
+                        <p><b>UPDATE: Orientation Control</b></p>
+                        <p>The PD orientation control implemented from lab 11 and 12 allowed me to update my mapping lab for higher accuracy. The process of implementation of orientation control was very similar to the position control in PID lab 6. Despite the instability of the motor control, orientation control assumed that the robot will rotate on a single axis, which was variant time to time. The robot was set to measure every 20 degrees with a total rotation of 360 degrees. I used one ToF sensor, so it gave me total of 40 data points (2 iteration) per point. Below is the robot rotating in orientation control. </p>
+                        <center><iframe width="431" height="766" src="https://www.youtube.com/embed/d6TI3Zn13-U" title="Orientation Control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+                        <p><b>Open loop lab</b></p>
                         <p>Because I was pressed on time, I opted to open loop control to rotate the robot. For more accurate ToF sensor outputs, the open loop consisted of rotating for certain amount and stopping for data acquisition. After multiple trial and errors, I ended up rotating the robot for 85ms and then stopping for total of 25 data points for each position in the map. The code snippet below shows the lab. </p>
                         <center><img class="center" src="assets/img/lab9/code.png" width = "350"/></center>
                         <p>This is the video of the robot rotating in open loop. </p>
                         <center><iframe width="442" height="786" src="https://www.youtube.com/embed/FhGtCUZK1B0" title="open loop rotation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+
+                        <p><b>Comparison</b></p>
+                        <p>For both cases, the robot didn't rotate on a constant axis and drifting occurred (about 5 ~ 10 centimeters from the center). However, it can be seen that the angle change for orientation control is definitely constant since for open loop control, the motor was too unstable to make constant angle rotation. </p>
+
+
 
 
                         <h2 class="section-heading">Mapping</h2>
@@ -48,7 +59,7 @@
                         <p>The collected data for each trial was stored in an array and sent at the end of the trial. I used a different command in jupyter just for the data collection, and stored it in python through the callback function. The final data that was sent to python was just the tof sensor and the yaw values in degrees.</p>
 
                         <h2 class="section-heading">Reading Distances</h2>
-                        <p>For each point of measurement [(-3,-2), (0,3), (5,3), (5,-3)], the robot rotates at relatively constant velocity, collects ToF and yaw values for each position, and after the collection is finished it sends the measured data through bluetooth. The images below are polar graphs of the distance values read for each point. For more accurate map, multiple trials were measured. </p>
+                        <p>For each point of measurement [(-3,-2), (0,3), (5,3), (5,-3)], the robot rotates at relatively constant velocity, collects ToF and yaw values for each position, and after the collection is finished it sends the measured data through bluetooth. The images below are polar graphs of the distance values read for each point. For more accurate map, multiple trials were measured. This polar map was a sanity check before moving on to the next step. The images below are from open loop control session, but same was done on the orientation control. </p>
                         <center><p><b>(-3,-2)</b></p></center>
                         <center><img class="center" src="assets/img/lab9/image.png" width = "350"/></center>
                         <center><p><b>(0,3)</b></p></center>
@@ -62,11 +73,20 @@
                         <p>To combine all four measurement points to create the whole map of the room, I needed to convert all data points to Cartesian coordinates and add the x and y offset. First, since given coordinates are in feet, I converted all of them to mm by multiplying with a factor of 304.8 mm/ft. The code used to convert is attached below, which I borrowed from last year's student. </p>
                         <center><img class="center" src="assets/img/lab9/map.png" width = "700"/></center>
                         <p>The image below is the accumulated data points of the four measuring points. </p>
-                        <center><img class="center" src="assets/img/lab9/mapping.png" width = "500"/></center>
+
+                        <p><b>Orientation control</b></p>
+                        <center><img class="center" src="assets/img/lab9/map2.png" width = "500"/></center>
+                        <p>The accuracy of the distance sensor is definitely low for long distances, as seen in the extraneous data points in the middle of the arena. Another problem spot is the small box in the middle-bottom part of the arena, since the width is too small and the height is not covered my a lot of the measuring points. But overall, the distance measurment and mapping in the near corner looks pretty close to the actual arena, so I am satisfied with the mapping.  </p>
+
+                        <p><b>Open loop control</b></p>
+                        <center><img class="center" src="assets/img/lab9/mapping2.png" width = "500"/></center>
                         <p>From this, we can conclude that the robot's measurment for long distances are very unreliable. When the distance from the wall is more than 2500mm, such as the lonely orange dot on the left bottom side of the map, the measurements tend to be very off. Furthermore, the robot is very inaccurate when it is facing the corners of the wall or the box, resulting in slightly curved-looking data points.  </p>
 
+                        <p><b>Comparison</b></p>
+
+                        <h2 class="section-heading">Conclusion</h2>
                         <p>The whole data points with the outline of the actual map is seen below. The black outline represents the actual map of the room, whereas the blue is the approximate outline that my robot created. </p>
-                        <center><img class="center" src="assets/img/lab9/final_map.png" width = "500"/></center>
+                        <center><img class="center" src="assets/img/lab9/final_map2.png" width = "500"/></center>
                         <p></p>
                     </div>
                 </div>
