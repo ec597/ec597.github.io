@@ -40,11 +40,32 @@
                         <center><img class="center" src="assets/img/lab12/intro.png" width = "550"/></center>
 
                         <p><b>My method</b></p>
-                        <p>As mentioned in the previous lab (Lab 11) my robot was not good in localization in certain areas in the arena -- mainly the left bottom corner. Thus, I opted to use PID control for most of the waypoints and use localization at the bottom right corner as well as the top portion of the lab. This is mostly because PID control is easier and less time consuming to implement and has the most successful rate throughout my labs. </p>
+                        <p>As mentioned in the previous lab (Lab 11) my robot was not good in localization in certain areas in the arena -- mainly the left bottom corner. Thus, I opted to use PID control for most of the waypoints because PID control is easier and less time consuming to implement and has the most successful rate throughout the semester. I was planning to add localization after I succeed with PID, but due to time crunch and high density in lab area, I couldn't do that part. </p>
 
-                        <p>To maximize accuracy, I decided to perfectly tune my 90 degrees turn and straight movements for the whole duration. Thus, rather than going on an angle from the first waypoint to the second, I would first go straight, turn 90 degrees and then stop at the second waypoint. This is definitely a less efficient way to get all the spots, but due to lacking motor capacities, it is the most reliable method. </p>
-                        <h2 class="section-heading">Code Implementation</h2>
-                        <p>Below are the code snippets that I used for this lab. </p>
+                        <p>To maximize accuracy, I decided to perfectly tune my 90 degrees turn and straight movements for the whole duration. Thus, rather than going on an angle from the first waypoint to the second, I would first go straight, turn 90 degrees and then stop at the second waypoint. This is definitely a less efficient way to get all the spots, but due to lacking motor capacities, it is the most reliable method. Shown below is the trajectory that my robot will be taking. </p>
+                        <center><img class="center" src="assets/img/lab12/map.JPG" width = "550"/></center>
+
+                        <h2 class="section-heading">Calibration</h2>
+                        <p>Before integrating all pd controls together, I each calibrated the commands I am using for execution. The four commands used in this lab were MOVE_FORWARD, MOVE_BACKWARD, ROTATE_CCW and ROTATE_CW. I tuned Kp, Kd and the distance values for each stop I am taking during the execution. The code snippets and videos are explained below. </p>
+                        <p><b>MOVE_FORWARD</b></p>
+
+                        <p><b>MOVE_BACKWARD</b></p>
+
+                        <p><b>ROTATE_CW</b></p>
+
+                        <p><b>ROTATE_CCW</b></p>
+
+                        <h2 class="section-heading">Execution + Video</h2>
+                        <p></p>
+<!--
+                        <h2 class="section-heading">Conclusion</h2>
+                        <p>Because the robot never know where its position was in the arena, all the small errors at each step of PD control added up quickly and made it really hard to have consecutively successful runs. I am disappointed that I couldn't finish up the class with a successful run of integrating localization in the final lab, but overall satisfied with the results. One note is that because the motor is so dependent to the battery level, it was crucial to use fully-charged batteries both in calibration and execution. </p>
+                        <p>______________________________________________________________________</p>
+
+                        <center><h2 class="section-heading">THANK YOU!</h2></center>
+                        <p>I want to thank the wonderful staff for holding open lab hours until the last day of exams and all the support that they gave me throughout the semester! This is my last semester at Cornell and probably the last engineering experience I am going to have for the rest of my career (I am actually going to law school after grad -- I know, it's crazy :) ), but it was such a memorable and unforgettable experience. (If anyone invents some crazy robots and want to patent them, contact me in three years! )</p>
+                      -->
+
                     </div>
                 </div>
             </div>
